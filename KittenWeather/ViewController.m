@@ -82,18 +82,20 @@
     [self.refreshButton setTitle:@"Refreshing…" forState:UIControlStateNormal];
     [self updateTemperature];
 }
-     
+
 - (IBAction)didTapAbout:(id)sender {
-    UIImageView *aboutView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AboutImage"]];
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAlert)];
-    aboutView.userInteractionEnabled = YES;
-    [aboutView addGestureRecognizer:tapRecognizer];
-    [self.view addSubview:aboutView];
-    
-    UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:aboutView snapToPoint:CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame))];
-    [self.animator addBehavior:snapBehavior];
-    
-    self.aboutView = aboutView;
+    if ( self.aboutView == nil ) {
+        UIImageView *aboutView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AboutImage"]];
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAlert)];
+        aboutView.userInteractionEnabled = YES;
+        [aboutView addGestureRecognizer:tapRecognizer];
+        [self.view addSubview:aboutView];
+        
+        UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:aboutView snapToPoint:CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame))];
+        [self.animator addBehavior:snapBehavior];
+        
+        self.aboutView = aboutView;
+    }
 }
 
 - (void)didTapAlert {
