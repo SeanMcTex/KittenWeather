@@ -20,6 +20,9 @@
 @property (strong) NSObject<KittenProvider> *kittenProvider;
 @property (strong) NSObject<WeatherProvider> *weatherProvider;
 
+@property (strong) UIDynamicAnimator *animator;
+@property (weak, nonatomic) UIView *aboutView;
+
 @end
 
 @implementation ViewController
@@ -31,6 +34,8 @@
 #else // TARGET_IPHONE_SIMULATOR
     [self injectProductionDependencies];
 #endif // TARGET_IPHONE_SIMULATOR
+    
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -79,6 +84,30 @@
 }
      
 - (IBAction)didTapAbout:(id)sender {
+    UIView *aboutView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2, -100, self.view.frame.size.width / 2, 100)];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAlert)];
+    aboutView.backgroundColor = [UIColor redColor];
+    [aboutView addGestureRecognizer:tapRecognizer];
+    UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:aboutView snapToPoint:CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame))];
+    [self.view addSubview:aboutView];
+    
+    [self.animator addBehavior:snapBehavior];
+    
+    self.aboutView = aboutView;
+}
+
+- (void)didTapAlert {
+    [self.animator removeAllBehaviors];
+    UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.aboutView]];
+    gravityBehavior.action = ^{
+        if ( self.aboutView.frame.origin.y > self.view.frame.size.height ) {
+            [self.animator removeAllBehaviors];
+            [self.aboutView removeFromSuperview];
+            self.aboutView = nil;
+        }
+    };
+    [self.animator addBehavior:gravityBehavior];
+    
 }
 
 #pragma mark - Dependencies
