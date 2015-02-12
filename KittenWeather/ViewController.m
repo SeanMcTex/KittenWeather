@@ -13,10 +13,12 @@
 
 @interface ViewController ()
 
-@property (strong) NSObject<KittenProvider> *kittenProvider;
-@property (strong) NSObject<WeatherProvider> *weatherProvider;
 @property (weak, nonatomic) IBOutlet UIImageView *kittenImageView;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
+@property (weak, nonatomic) IBOutlet UIButton *refreshButton;
+
+@property (strong) NSObject<KittenProvider> *kittenProvider;
+@property (strong) NSObject<WeatherProvider> *weatherProvider;
 
 @end
 
@@ -32,11 +34,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self putKittenImageInKittenView];
-    [self putTemperatureInTemperatureLabel];
+    [self updateKitten];
+    [self updateTemperature];
 }
 
-- (void)putKittenImageInKittenView {
+- (void)updateKitten {
     [self.kittenProvider
      getKittenWithSize:self.kittenImageView.frame.size
      completionBlock:^(UIImage *image) {
@@ -52,11 +54,12 @@
      }];
 }
 
-- (void)putTemperatureInTemperatureLabel {
+- (void)updateTemperature {
     [self.weatherProvider getTemperatureWithLatitude:97
                                            longitude:-24
                                      completionBlock:^(NSString *temperatureString) {
                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                             [self.refreshButton setTitle:@"Refresh" forState:UIControlStateNormal];
                                              [UIView transitionWithView:self.temperatureLabel
                                                                duration:1.0
                                                                 options:UIViewAnimationOptionTransitionCrossDissolve
@@ -71,6 +74,8 @@
 
 #pragma mark - Events
 - (IBAction)didTapRefresh:(id)sender {
+    [self.refreshButton setTitle:@"Refreshing…" forState:UIControlStateNormal];
+    [self updateTemperature];
 }
      
 - (IBAction)didTapAbout:(id)sender {

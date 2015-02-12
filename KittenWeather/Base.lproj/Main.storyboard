@@ -69,6 +69,7 @@
                     </view>
                     <connections>
                         <outlet property="kittenImageView" destination="4ox-AA-rCU" id="Wyq-eb-XFN"/>
+                        <outlet property="refreshButton" destination="2MT-NL-qE0" id="heu-XT-p1n"/>
                         <outlet property="temperatureLabel" destination="EOS-ob-KdK" id="A6a-LL-kLt"/>
                     </connections>
                 </viewController>
