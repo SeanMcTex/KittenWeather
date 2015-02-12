@@ -14,6 +14,8 @@
 		14CC246F1A8CF63B00868D1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14CC246E1A8CF63B00868D1F /* Images.xcassets */; };
 		14CC24721A8CF63B00868D1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CC24701A8CF63B00868D1F /* LaunchScreen.xib */; };
 		14CC247E1A8CF63B00868D1F /* KittenWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC247D1A8CF63B00868D1F /* KittenWeatherTests.m */; };
+		14CC248B1A8CFDCA00868D1F /* KittenTestProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC248A1A8CFDCA00868D1F /* KittenTestProvider.m */; };
+		14CC24901A8D056D00868D1F /* WeatherTestProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC248F1A8D056D00868D1F /* WeatherTestProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,12 @@
 		14CC24771A8CF63B00868D1F /* KittenWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KittenWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CC247C1A8CF63B00868D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14CC247D1A8CF63B00868D1F /* KittenWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KittenWeatherTests.m; sourceTree = "<group>"; };
+		14CC24871A8CFA6B00868D1F /* KittenProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KittenProvider.h; sourceTree = "<group>"; };
+		14CC24881A8CFA8300868D1F /* WeatherProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherProvider.h; sourceTree = "<group>"; };
+		14CC24891A8CFDCA00868D1F /* KittenTestProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KittenTestProvider.h; sourceTree = "<group>"; };
+		14CC248A1A8CFDCA00868D1F /* KittenTestProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KittenTestProvider.m; sourceTree = "<group>"; };
+		14CC248E1A8D056D00868D1F /* WeatherTestProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherTestProvider.h; sourceTree = "<group>"; };
+		14CC248F1A8D056D00868D1F /* WeatherTestProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTestProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,8 @@
 		14CC24601A8CF63B00868D1F /* KittenWeather */ = {
 			isa = PBXGroup;
 			children = (
+				14CC248D1A8D03F600868D1F /* WeatherProvider */,
+				14CC248C1A8D03E400868D1F /* KittenProvider */,
 				14CC24651A8CF63B00868D1F /* AppDelegate.h */,
 				14CC24661A8CF63B00868D1F /* AppDelegate.m */,
 				14CC24681A8CF63B00868D1F /* ViewController.h */,
@@ -117,6 +127,26 @@
 				14CC247C1A8CF63B00868D1F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14CC248C1A8D03E400868D1F /* KittenProvider */ = {
+			isa = PBXGroup;
+			children = (
+				14CC24871A8CFA6B00868D1F /* KittenProvider.h */,
+				14CC24891A8CFDCA00868D1F /* KittenTestProvider.h */,
+				14CC248A1A8CFDCA00868D1F /* KittenTestProvider.m */,
+			);
+			name = KittenProvider;
+			sourceTree = "<group>";
+		};
+		14CC248D1A8D03F600868D1F /* WeatherProvider */ = {
+			isa = PBXGroup;
+			children = (
+				14CC24881A8CFA8300868D1F /* WeatherProvider.h */,
+				14CC248E1A8D056D00868D1F /* WeatherTestProvider.h */,
+				14CC248F1A8D056D00868D1F /* WeatherTestProvider.m */,
+			);
+			name = WeatherProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +249,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14CC24901A8D056D00868D1F /* WeatherTestProvider.m in Sources */,
 				14CC246A1A8CF63B00868D1F /* ViewController.m in Sources */,
+				14CC248B1A8CFDCA00868D1F /* KittenTestProvider.m in Sources */,
 				14CC24671A8CF63B00868D1F /* AppDelegate.m in Sources */,
 				14CC24641A8CF63B00868D1F /* main.m in Sources */,
 			);
