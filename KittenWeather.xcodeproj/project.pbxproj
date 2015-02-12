@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		148711A31A8D428C006EF229 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 148711A21A8D428C006EF229 /* Media.xcassets */; };
 		14CC24641A8CF63B00868D1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC24631A8CF63B00868D1F /* main.m */; };
 		14CC24671A8CF63B00868D1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC24661A8CF63B00868D1F /* AppDelegate.m */; };
 		14CC246A1A8CF63B00868D1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC24691A8CF63B00868D1F /* ViewController.m */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		148711A21A8D428C006EF229 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		14CC245E1A8CF63B00868D1F /* KittenWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittenWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CC24621A8CF63B00868D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14CC24631A8CF63B00868D1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				14CC246E1A8CF63B00868D1F /* Images.xcassets */,
 				14CC24701A8CF63B00868D1F /* LaunchScreen.xib */,
 				14CC24611A8CF63B00868D1F /* Supporting Files */,
+				148711A21A8D428C006EF229 /* Media.xcassets */,
 			);
 			path = KittenWeather;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			files = (
 				14CC246D1A8CF63B00868D1F /* Main.storyboard in Resources */,
 				14CC24721A8CF63B00868D1F /* LaunchScreen.xib in Resources */,
+				148711A31A8D428C006EF229 /* Media.xcassets in Resources */,
 				14CC246F1A8CF63B00868D1F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +452,7 @@
 				14CC24831A8CF63B00868D1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		14CC24841A8CF63B00868D1F /* Build configuration list for PBXNativeTarget "KittenWeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +461,7 @@
 				14CC24861A8CF63B00868D1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
