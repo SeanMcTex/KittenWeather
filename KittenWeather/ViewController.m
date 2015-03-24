@@ -11,6 +11,8 @@
 #import "KittenTestProvider.h"
 #import "WeatherTestProvider.h"
 
+#import "KittenProductionProvider.h"
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *kittenImageView;
@@ -117,7 +119,7 @@
 }
 
 - (void)injectProductionDependencies {
-    
+    self.kittenProvider = [[KittenProductionProvider alloc] init];
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142D80BB1AC1D81300C6EED2 /* KittenProductionProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 142D80BA1AC1D81300C6EED2 /* KittenProductionProvider.m */; };
 		148711A31A8D428C006EF229 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 148711A21A8D428C006EF229 /* Media.xcassets */; };
 		14CC24641A8CF63B00868D1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC24631A8CF63B00868D1F /* main.m */; };
 		14CC24671A8CF63B00868D1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC24661A8CF63B00868D1F /* AppDelegate.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		142D80B91AC1D81300C6EED2 /* KittenProductionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KittenProductionProvider.h; sourceTree = "<group>"; };
+		142D80BA1AC1D81300C6EED2 /* KittenProductionProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KittenProductionProvider.m; sourceTree = "<group>"; };
 		148711A21A8D428C006EF229 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		14CC245E1A8CF63B00868D1F /* KittenWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittenWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CC24621A8CF63B00868D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -136,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				14CC24871A8CFA6B00868D1F /* KittenProvider.h */,
+				142D80B91AC1D81300C6EED2 /* KittenProductionProvider.h */,
+				142D80BA1AC1D81300C6EED2 /* KittenProductionProvider.m */,
 				14CC24891A8CFDCA00868D1F /* KittenTestProvider.h */,
 				14CC248A1A8CFDCA00868D1F /* KittenTestProvider.m */,
 			);
@@ -255,6 +260,7 @@
 			files = (
 				14CC24901A8D056D00868D1F /* WeatherTestProvider.m in Sources */,
 				14CC246A1A8CF63B00868D1F /* ViewController.m in Sources */,
+				142D80BB1AC1D81300C6EED2 /* KittenProductionProvider.m in Sources */,
 				14CC248B1A8CFDCA00868D1F /* KittenTestProvider.m in Sources */,
 				14CC24671A8CF63B00868D1F /* AppDelegate.m in Sources */,
 				14CC24641A8CF63B00868D1F /* main.m in Sources */,
@@ -384,6 +390,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KittenWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -394,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KittenWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
