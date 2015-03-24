@@ -12,6 +12,7 @@
 #import "WeatherTestProvider.h"
 
 #import "KittenProductionProvider.h"
+#import "WeatherProductionProvider.h"
 
 @interface ViewController ()
 
@@ -120,6 +121,7 @@
 
 - (void)injectProductionDependencies {
     self.kittenProvider = [[KittenProductionProvider alloc] init];
+    self.weatherProvider = [[WeatherProductionProvider alloc] init];
 }
 
 @end
