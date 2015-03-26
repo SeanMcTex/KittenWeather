@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 
 #import "Temperature.h"
+#import "Fox.h"
 
 const float FREEZING_KELVIN = 273.15;
 const float BOILING_KELVIN = 373.15;
@@ -45,6 +46,50 @@ const float MATCHING_TOLERANCE = 0.1;
 - (void)testBoilingCelsius {
     Temperature *temperature = [Temperature temperatureWithCelsiusDegrees:BOILING_CELSIUS];
     XCTAssertEqualWithAccuracy(temperature.kelvinDegrees, BOILING_KELVIN, MATCHING_TOLERANCE);
+}
+
+#pragma mark - Fox Tests
+
+- (void)testIdentityKelvin {
+    id<FOXGenerator> kelvinTemperatureGenerator = FOXFloat();
+    FOXAssert( FOXForAll(kelvinTemperatureGenerator, ^BOOL(NSNumber *kelvinTemperatureNumber) {
+        Temperature *temperature = [Temperature temperatureWithKelvinDegrees:[kelvinTemperatureNumber floatValue]];
+        float difference = abs( [kelvinTemperatureNumber floatValue] - temperature.kelvinDegrees );
+        if ( difference > 0.1 ) {
+            NSLog(@"FOO: %f BAR: %f", [kelvinTemperatureNumber floatValue], temperature.imperialDegrees);
+            return NO;
+        } else {
+            return  YES;
+        }
+    }));
+}
+
+- (void)testIdentityCelsius {
+    id<FOXGenerator> celsiusGenerator = FOXFloat();
+    FOXAssert( FOXForAll(celsiusGenerator, ^BOOL(NSNumber *celsiusTemperatureNumber) {
+        Temperature *temperature = [Temperature temperatureWithCelsiusDegrees:[celsiusTemperatureNumber floatValue]];
+        float difference = abs( [celsiusTemperatureNumber floatValue] - temperature.celsiusDegrees );
+        if ( difference > 0.1 ) {
+            NSLog(@"FOO: %f BAR: %f", [celsiusTemperatureNumber floatValue], temperature.celsiusDegrees);
+            return NO;
+        } else {
+            return  YES;
+        }
+    }));
+}
+
+- (void)testIdentityImperial {
+    id<FOXGenerator> imperialTemperatureGenerator = FOXFloat();
+    FOXAssert( FOXForAll(imperialTemperatureGenerator, ^BOOL(NSNumber *imperialTemperatureNumber) {
+        Temperature *temperature = [Temperature temperatureWithImperialDegrees:[imperialTemperatureNumber floatValue]];
+        float difference = abs( [imperialTemperatureNumber floatValue] - temperature.imperialDegrees );
+        if ( difference > 0.1 ) {
+            NSLog(@"FOO: %f BAR: %f", [imperialTemperatureNumber floatValue], temperature.imperialDegrees);
+            return NO;
+        } else {
+            return  YES;
+        }
+    }));
 }
 
 
