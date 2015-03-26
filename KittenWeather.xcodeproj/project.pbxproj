@@ -19,6 +19,9 @@
 		14CC247E1A8CF63B00868D1F /* KittenWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC247D1A8CF63B00868D1F /* KittenWeatherTests.m */; };
 		14CC248B1A8CFDCA00868D1F /* KittenTestProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC248A1A8CFDCA00868D1F /* KittenTestProvider.m */; };
 		14CC24901A8D056D00868D1F /* WeatherTestProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC248F1A8D056D00868D1F /* WeatherTestProvider.m */; };
+		14F797E71AC483B200275384 /* Temperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F797E61AC483B200275384 /* Temperature.m */; };
+		14F797E91AC4909600275384 /* Temperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F797E61AC483B200275384 /* Temperature.m */; };
+		14F797EB1AC490E500275384 /* TemperatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F797EA1AC490E500275384 /* TemperatureTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		14CC248A1A8CFDCA00868D1F /* KittenTestProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KittenTestProvider.m; sourceTree = "<group>"; };
 		14CC248E1A8D056D00868D1F /* WeatherTestProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherTestProvider.h; sourceTree = "<group>"; };
 		14CC248F1A8D056D00868D1F /* WeatherTestProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTestProvider.m; sourceTree = "<group>"; };
+		14F797E51AC483B200275384 /* Temperature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temperature.h; sourceTree = "<group>"; };
+		14F797E61AC483B200275384 /* Temperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temperature.m; sourceTree = "<group>"; };
+		14F797EA1AC490E500275384 /* TemperatureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		14CC24601A8CF63B00868D1F /* KittenWeather */ = {
 			isa = PBXGroup;
 			children = (
+				14F797E81AC4859000275384 /* Temperature */,
 				14CC248D1A8D03F600868D1F /* WeatherProvider */,
 				14CC248C1A8D03E400868D1F /* KittenProvider */,
 				14CC24651A8CF63B00868D1F /* AppDelegate.h */,
@@ -126,6 +133,7 @@
 			children = (
 				14CC247D1A8CF63B00868D1F /* KittenWeatherTests.m */,
 				14CC247B1A8CF63B00868D1F /* Supporting Files */,
+				14F797EA1AC490E500275384 /* TemperatureTests.m */,
 			);
 			path = KittenWeatherTests;
 			sourceTree = "<group>";
@@ -160,6 +168,15 @@
 				142D80BD1AC1DC4200C6EED2 /* WeatherProductionProvider.m */,
 			);
 			name = WeatherProvider;
+			sourceTree = "<group>";
+		};
+		14F797E81AC4859000275384 /* Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				14F797E51AC483B200275384 /* Temperature.h */,
+				14F797E61AC483B200275384 /* Temperature.m */,
+			);
+			name = Temperature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +286,7 @@
 				142D80BB1AC1D81300C6EED2 /* KittenProductionProvider.m in Sources */,
 				14CC248B1A8CFDCA00868D1F /* KittenTestProvider.m in Sources */,
 				14CC24671A8CF63B00868D1F /* AppDelegate.m in Sources */,
+				14F797E71AC483B200275384 /* Temperature.m in Sources */,
 				14CC24641A8CF63B00868D1F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F797E91AC4909600275384 /* Temperature.m in Sources */,
+				14F797EB1AC490E500275384 /* TemperatureTests.m in Sources */,
 				14CC247E1A8CF63B00868D1F /* KittenWeatherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
