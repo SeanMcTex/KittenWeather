@@ -1,0 +1,10 @@
+PODS:
+  - Fox (1.0.1)
+
+DEPENDENCIES:
+  - Fox (~> 1.0.1)
+
+SPEC CHECKSUMS:
+  Fox: d285ffc02c5ffa0d739afc2040d86700a592bd09
+
+COCOAPODS: 0.35.0
