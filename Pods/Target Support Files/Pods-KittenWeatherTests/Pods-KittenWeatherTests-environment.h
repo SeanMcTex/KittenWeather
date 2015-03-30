@@ -6,6 +6,12 @@
 // project.
 
 
+// FBSnapshotTestCase
+#define COCOAPODS_POD_AVAILABLE_FBSnapshotTestCase
+#define COCOAPODS_VERSION_MAJOR_FBSnapshotTestCase 1
+#define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase 6
+#define COCOAPODS_VERSION_PATCH_FBSnapshotTestCase 0
+
 // Fox
 #define COCOAPODS_POD_AVAILABLE_Fox
 #define COCOAPODS_VERSION_MAJOR_Fox 1
