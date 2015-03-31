@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Mutual Mobile. All rights reserved.
 //
 
-#import "ViewTests.h"
+#import "FBSnapshotTestCase.h"
 #import "ViewController.h"
 
-@interface ViewTests()
+@interface ViewTests : FBSnapshotTestCase
 
 @property (strong) ViewController *viewController;
 
