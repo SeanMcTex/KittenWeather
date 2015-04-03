@@ -17,10 +17,12 @@ NSString *const WEATHER_STRING = @"http://api.openweathermap.org/data/2.5/weathe
     dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *weatherURL = [NSURL URLWithString:WEATHER_STRING];
         NSData *weatherData = [NSData dataWithContentsOfURL:weatherURL];
-        NSDictionary *weatherJSON = [NSJSONSerialization JSONObjectWithData:weatherData options:0 error:nil];
-        NSNumber *temperature = weatherJSON[@"main"][@"temp"];
-        NSString *temperatureString = [NSString stringWithFormat:@"%.1f°F", [temperature floatValue] ];
-        completion( temperatureString );
+        if ( weatherData != nil ) {
+            NSDictionary *weatherJSON = [NSJSONSerialization JSONObjectWithData:weatherData options:0 error:nil];
+            NSNumber *temperature = weatherJSON[@"main"][@"temp"];
+            NSString *temperatureString = [NSString stringWithFormat:@"%.1f°F", [temperature floatValue] ];
+            completion( temperatureString );
+        }
     });
 }
 
