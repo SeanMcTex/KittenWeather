@@ -5,6 +5,7 @@ Demo Project for CocoaConf 2015 Presentation: "The Best Automated Tests You Donâ
 
 - Tests == Good
 - Writing Tests == PITA
+	- Happy path, failing path, edge cases, sanity tests, etc.
 - How to use open-source tools to maximize benefit:effort ratio
 - "People think computers will keep them from making mistakes. They're wrong. With computers you make mistakes faster." -Adam Osborne
 
@@ -23,6 +24,8 @@ Demo Project for CocoaConf 2015 Presentation: "The Best Automated Tests You Donâ
 	- Chaos Monkey is a project from Netflix that randomly kills off systems in a cloud cluster
 	- Only does it during business hours so folks are available to respond to and learn from the failures
 	- Has helped make Netflix' infrastructure much more resiliant than it otherwise would have been
+- Uses UIAutomation framework, which is usually used for functional testing, to stress-test iOS apps by firing all kinds of random UI events: taps, swipes, rotations, pinches, shakes, etc.
+- Does two things for us: helps to generate UI states we may not have thought of, and allows us to profile the app under continuous usage conditions
 
 ### Using UIAutoMonkey
 
@@ -48,27 +51,37 @@ Demo Project for CocoaConf 2015 Presentation: "The Best Automated Tests You Donâ
 ## QuickCheck and Friends
 
 * QuickCheck originated in Haskell and has been ported to lots of other languages
-* Generates lots of values in a deterministic way, sets class properties, and verifies that what's true should still be true
+* Generates lots of values in a deterministic way, sets class properties, and verifies that what's true should still be true. "The programmer provides a specification of the program, in the form of properties which functions should satisfy, and QuickCheck then tests that the properties hold in a large number of randomly generated cases."
 * I cheated: you still have to write these tests. But the payoff is that if you write them once, you essentially get hundreds of tests for free.
+* The most mature library for doing this sort of testing in Cocoa is called Fox. It lives at https://github.com/jeffh/Fox, and has support for Objective C, as well as a DSL underway development for Swift.
 
 ### Setting up Fox
 
-	pod 'Fox', '~>1.0.1'
+- Can be done either as a git submodule:
+
+		git submodule add https://github.com/jeffh/Fox.git Externals/Fox
+
+- Or as a CocoaPods install
+
+		pod 'Fox', '~>1.0.1'
 
 ### Write the Tests
 
-	- (void)testIdentityKelvin {
-	    id<FOXGenerator> kelvinTemperatureGenerator = FOXFloat();
-	    FOXAssert( FOXForAll(kelvinTemperatureGenerator, ^BOOL(NSNumber *kelvinTemperatureNumber) {
-	        Temperature *temperature = [Temperature temperatureWithKelvinDegrees:[kelvinTemperatureNumber floatValue]];
-	        float difference = abs( [kelvinTemperatureNumber floatValue] - temperature.kelvinDegrees );
-	        if ( difference > 0.1 ) {
-	            return NO;
-	        } else {
-	            return  YES;
-	        }
-	    }));
-	}
+- My Temperature class needs some sanity checking. It supports temperatures in Imperial (Farenheit), Celsius, and Kelvin. And while it shouldn't be obvious from the public interface, we store the temperature internally in degrees Kelvin. (Show code.)
+- Some of the most basic checks we can do on our Temperature class, then, are making sure that the number of degrees we put into an instance is the same as the number of degrees we get out when we query the object later. Here's what that test looks like for Kelvin temperatures.
+
+		- (void)testIdentityKelvin {
+		    id<FOXGenerator> kelvinTemperatureGenerator = FOXFloat();
+		    FOXAssert( FOXForAll(kelvinTemperatureGenerator, ^BOOL(NSNumber *kelvinTemperatureNumber) {
+		        Temperature *temperature = [Temperature temperatureWithKelvinDegrees:[kelvinTemperatureNumber floatValue]];
+		        float difference = abs( [kelvinTemperatureNumber floatValue] - temperature.kelvinDegrees );
+		        if ( difference > 0.1 ) {
+		            return NO;
+		        } else {
+		            return  YES;
+		        }
+		    }));
+		}
 
 ### Fix Problems
 
@@ -85,21 +98,26 @@ Demo Project for CocoaConf 2015 Presentation: "The Best Automated Tests You Donâ
 
 ## Making Sure Your UI is Stable with FBSnapshotTestCase
 - Testing UI is tough.
-* Lots based on https://github.com/facebook/ios-snapshot-test-case
-* https://github.com/ashfurrow/Nimble-Snapshots
-* http://www.objc.io/issue-15/snapshot-testing.html
-* https://github.com/orta/snapshots
+- FBSnapshotTestCase https://github.com/facebook/ios-snapshot-test-case
+- Takes a baseline image of a UIView, compares it to image generated on subsequent runs.
 
 ### Setup
 - Use Pod
+
+		pod 'FBSnapshotTestCase'
+
 - Add preprocessor definitions
 ![Preprocessor Settings](DocumentationAssets/preprocessor.png)
 
 ### First Run (setting baselines)
 
+	#import "FBSnapshotTestCase.h"
+	...
+	@interface ViewTests : FBSnapshotTestCase
+	...
 	-(void)setUp {
-	    [super setUp];
-	    //self.recordMode = YES;
+	    [super setUp]; // IMPORTANT!
+	    self.recordMode = YES;
 	    self.viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
 	}
 
@@ -114,11 +132,14 @@ Demo Project for CocoaConf 2015 Presentation: "The Best Automated Tests You Donâ
 - Note test has failed
 - Look at log
 - Demonstrate Kaleidescope call
+- Demonstrate Xcode plugin https://github.com/orta/snapshots
+- If you determine the new snapshot looks good, simply reset the baseline.
 
 ### A Few More Things
 
 - Can be pointed to any UIView. Very useful for custom UIView subclasses.
 - Setting this up to run automatically on different device sizes is possible, but is something of a headache.
+- http://www.objc.io/issue-15/snapshot-testing.html has more details
 
 ## Conclusion
 
