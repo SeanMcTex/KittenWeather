@@ -7,5 +7,6 @@ end
 
 target 'KittenWeatherTests' do
 pod 'Fox', '~>1.0.1'
+pod 'FBSnapshotTestCase'
 end
 
