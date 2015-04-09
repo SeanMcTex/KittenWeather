@@ -36,6 +36,10 @@
 
 ---
 
+# [fit]UIAutoMonkey
+
+---
+
 ## UIAutoMonkey
 - https://github.com/jonathanpenn/ui-auto-monkey
 - written by Jonathan Penn, inspired by Netflix' [Chaos Monkey](https://github.com/Netflix/SimianArmy/wiki/Chaos-Monkey)
@@ -65,6 +69,12 @@
 
 - Pretty heavily customizable. See options at top of .js file.
 - Because of randomness, tests aren't repeatable. Don't necessarily make this part of your unit test suite, but bring it to bear often.
+
+---
+
+# [fit]QuickCheck
+# [fit]&
+# [fit]Fox
 
 ---
 
@@ -131,10 +141,14 @@ pod 'Fox', '~>1.0.1'
 - Tutorial: http://fox-testing.readthedocs.org/en/latest/tutorial.html
 
 ---
+
+#[fit]FBSnapshotTestCase
+
+---
 # FBSnapshotTestCase
 - Testing UI is tough.
-- FBSnapshotTestCase helps. https://github.com/facebook/ios-snapshot-test-case
 - Takes a baseline image of a UIView, compares it to image generated on subsequent runs.
+- https://github.com/facebook/ios-snapshot-test-case
 
 ---
 
@@ -204,3 +218,4 @@ pod 'Fox', '~>1.0.1'
 - https://github.com/SeanMcTex/KittenWeather
 - Sean McMains -- @SeanMcTex
 - sean.mcmains@mutualmobile.com
+- http://www.mcmains.net
