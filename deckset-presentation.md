@@ -70,6 +70,8 @@
 - Pretty heavily customizable. See options at top of .js file.
 - Because of randomness, tests aren't repeatable. Don't necessarily make this part of your unit test suite, but bring it to bear often.
 
+^ Mention that it works fine with Swift, since it drives the UI.
+
 ---
 
 # [fit]QuickCheck
@@ -139,6 +141,7 @@ pod 'Fox', '~>1.0.1'
 
 - Lots of generators, and you can make your own.
 - Tutorial: http://fox-testing.readthedocs.org/en/latest/tutorial.html
+- Using with Swift
 
 ---
 
@@ -194,11 +197,20 @@ pod 'Fox', '~>1.0.1'
 # A Few More Things
 
 - Can be pointed at any UIView.
-- Powerful with CI
+- Use CI to check different devices
 - http://www.objc.io/issue-15/snapshot-testing.html has more details
 - Xcode plugin: https://github.com/orta/snapshots
+- Using with Swift
 
 ^ Setting this up to run automatically on different device sizes is possible, but is something of a headache.
+
+---
+
+# Summary
+
+- __UIAutoMonkey__: UI State/Stress Testing
+- __QuickCheck/Fox__: Randomized Automatic Validation Testing
+- __FBSnapshotTestCase__: Snapshot Testing
 
 ---
 
