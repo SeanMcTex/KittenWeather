@@ -68,7 +68,8 @@
 # A Bit More On The Monkey
 
 - Pretty heavily customizable. See options at top of .js file.
-- Because of randomness, tests aren't repeatable. Don't necessarily make this part of your unit test suite, but bring it to bear often.
+- Test double-taps!
+- Because of randomness, tests aren't repeatable. Don't make this part of your unit test suite, but run it often.
 
 ^ Mention that it works fine with Swift, since it drives the UI.
 
@@ -127,13 +128,75 @@ pod 'Fox', '~>1.0.1'
 }
 ```
 		
-^ My Temperature class needs some sanity checking. It supports temperatures in Imperial (Farenheit), Celsius, and Kelvin. And while it shouldn't be obvious from the public interface, we store the temperature internally in degrees Kelvin. (Show code.) Some of the most basic checks we can do on our Temperature class, then, are making sure that the number of degrees we put into an instance is the same as the number of degrees we get out when we query the object later. Here's what that test looks like for Kelvin temperatures.
+^ My Temperature class needs some sanity checking. It supports temperatures in Imperial (Farenheit), Celsius, and Kelvin. And while it shouldn't be obvious from the public interface, we store the temperature internally in degrees Kelvin. (Show code.) Some of the most basic checks we can do on our Temperature class, then, are making sure that the number of degrees we put into an instance is the same as the number of degrees we get out when we query the object later. Here's what that test looks like for Kelvin temperatures. Since the code's a bit complex, let's break it down line by line.
+
+---
+
+# Create a Generator
+
+```objectivec
+id<FOXGenerator> kelvinTemperatureGenerator = FOXFloat();
+```
+
+^ First we instantiate an instance of a FOXFloat generator. Generators are the classes that Fox uses to create all of the random values that it will be throwing at your class. They also contain logic for shrinking the results when there's an error; we'll talk more about that later. Since temperatures can reasonably be represented as a float value, we use Fox's float generator here.
+
+---
+# Assert & Call Runner
+
+
+```objectivec
+FOXAssert( FOXForAll( kelvinTemperatureGenerator, 
+	^BOOL( NSNumber *kelvinTemperatureNumber ) {
+	...
+}
+```
+
+^ Next we use FOXAssert to assert that the contained tests should pass. It takes a property assertion generator, of which there's currently only one available -- FOXForAll. FOXForAll is where the interesting stuff happens. We give it a generator -- the FOXFloat generator we've already defined in this case -- and a block that contains the actual test we'll be running. It's then repsonsible for using that generator to specify lots of 
+
+---
+# The Actual Test
+### (What Does the Fox Say?)
+
+```objectivec
+Temperature *temperature = [Temperature 
+	temperatureWithKelvinDegrees:[kelvinTemperatureNumber floatValue]];
+float difference = fabs( [kelvinTemperatureNumber floatValue] - 
+	temperature.kelvinDegrees );
+if ( difference > 0.1 ) {
+    return NO;
+} else {
+    return  YES;
+}
+```
+
 
 ---
 
 #[fit]Demo
 
 ^ Note that the test for Imperial units is failing for very large values. This suggests a rounding error. Look at the error; note that it makes an effort to shrink to the smallest value that triggers the problem. Change math to use long doubles. Rerun tests, verify problem is now fixed.
+
+---
+# For Control Freaks
+
+```objectivec
+    FOXOptions options = {
+        .seed=5,              // default: time(NULL)
+        .numberOfTests=5000,  // default: 500
+        .maximumSize=100,     // default: 200
+    };
+    FOXAssertWithOptions( FOXForAll(kelvinTemperatureGenerator, 
+		^BOOL(NSNumber *kelvinTemperatureNumber) {
+.		..
+    }), options);
+```
+
+---
+
+#[fit]Why You Want To Be
+#[fit]A Control Freak
+
+^ We want our tests to be reproducible. Nothing is more maddening than not being able to reproduce a failed test. Discuss random vs. pseudo-random. Since we're using a known algorithm for generating our pseudo-random numbers, we can get consistent results by specifying the options here.
 
 ---
 
@@ -181,6 +244,27 @@ pod 'Fox', '~>1.0.1'
 			instantiateInitialViewController];
 	}
 
+	- (void)testRootView {
+	    FBSnapshotVerifyView( self.viewController.view, nil );
+	}
+```
+
+---
+
+# Setting Things Up
+```objective c
+	-(void)setUp {
+	    [super setUp]; // IMPORTANT!
+	    self.recordMode = YES;
+	    self.viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] 
+			instantiateInitialViewController];
+	}
+```
+
+---
+
+# Running the Test
+```objectivec
 	- (void)testRootView {
 	    FBSnapshotVerifyView( self.viewController.view, nil );
 	}
