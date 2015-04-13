@@ -1,0 +1,1 @@
+../../../COSTouchVisualizer/Classes/COSTouchVisualizerWindow.h

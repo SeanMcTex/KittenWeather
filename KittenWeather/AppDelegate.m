@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <COSTouchVisualizerWindow.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<COSTouchVisualizerWindowDelegate>
 
 @end
 
@@ -40,6 +41,23 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Touch Visualization
+
+- (COSTouchVisualizerWindow *)window {
+    static COSTouchVisualizerWindow *visWindow = nil;
+    if (!visWindow) visWindow = [[COSTouchVisualizerWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    visWindow.touchVisualizerWindowDelegate = self;
+    return visWindow;
+}
+
+- (BOOL)touchVisualizerWindowShouldShowFingertip:(COSTouchVisualizerWindow *)window {
+    return YES;
+}
+
+- (BOOL)touchVisualizerWindowShouldAlwaysShowFingertip:(COSTouchVisualizerWindow *)window {
+    return YES;
 }
 
 @end

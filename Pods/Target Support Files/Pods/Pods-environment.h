@@ -12,15 +12,3 @@
 #define COCOAPODS_VERSION_MINOR_COSTouchVisualizer 0
 #define COCOAPODS_VERSION_PATCH_COSTouchVisualizer 6
 
-// FBSnapshotTestCase
-#define COCOAPODS_POD_AVAILABLE_FBSnapshotTestCase
-#define COCOAPODS_VERSION_MAJOR_FBSnapshotTestCase 1
-#define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase 6
-#define COCOAPODS_VERSION_PATCH_FBSnapshotTestCase 0
-
-// Fox
-#define COCOAPODS_POD_AVAILABLE_Fox
-#define COCOAPODS_VERSION_MAJOR_Fox 1
-#define COCOAPODS_VERSION_MINOR_Fox 0
-#define COCOAPODS_VERSION_PATCH_Fox 1
-
