@@ -314,4 +314,5 @@ if ( difference > 0.1 ) {
 - https://github.com/SeanMcTex/KittenWeather
 - Sean McMains -- @SeanMcTex
 - sean.mcmains@mutualmobile.com
-- http://www.mcmains.net
+- http://www.mutualmobile.com/resources
+
