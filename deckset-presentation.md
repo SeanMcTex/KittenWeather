@@ -191,6 +191,8 @@ if ( difference > 0.1 ) {
     }), options);
 ```
 
+^ seed is used by the random number generator. Using the same seed makes tests reproducible. Number of tests determines how many values the generator will spit out. MaximumSize is a hint, used by different generators in different ways, as to how large the values it creates should be.
+
 ---
 
 #[fit]Why You Want To Be
@@ -252,7 +254,7 @@ if ( difference > 0.1 ) {
 ---
 
 # Setting Things Up
-```objective c
+```objectivec
 	-(void)setUp {
 	    [super setUp]; // IMPORTANT!
 	    self.recordMode = YES;
@@ -269,6 +271,8 @@ if ( difference > 0.1 ) {
 	    FBSnapshotVerifyView( self.viewController.view, nil );
 	}
 ```
+
+^ The second parameter is an optional identifier. You can usually leave this out, but if you have multiple calls to FBSnapshotVerifyView in a single test, you'll need to use this to differentiate them.
 
 ---
 
